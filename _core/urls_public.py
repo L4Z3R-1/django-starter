@@ -20,11 +20,13 @@ from django.conf.urls.static import static
 from django.conf import settings
 from a_home.views import *
 from a_users.views import profile_view
+from a_tenant_manager.admin import tenant_admin_site
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
+    path('admin_tenants/', tenant_admin_site.urls),
 
     path('', include('a_home.urls')),   # <-- add this
 

@@ -1,6 +1,8 @@
 .venv/
 media/
 __pycache__/
+docker-compose.yml
+staticfiles
 db.sqlite3
 .env
 .DS_Store

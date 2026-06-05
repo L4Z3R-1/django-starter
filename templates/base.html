@@ -1,21 +1,21 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ PROJECT_TITLE }}</title>
-    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-    <script src="https://unpkg.com/htmx.org/dist/htmx.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style type="text/tailwindcss">
-        [x-cloak] { 
-            display: none !important; 
-        }
-        h1 {
-            @apply text-4xl font-bold mb-4
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{ PROJECT_TITLE }}</title>
+        <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+        <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+        <script src="https://unpkg.com/htmx.org/dist/htmx.js"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <style type="text/tailwindcss">
+            [x-cloak] { 
+                display: none !important; 
+            }
+            h1 {
+                @apply text-4xl font-bold mb-4
         }
         h2 {
             @apply text-xl font-bold mb-2
@@ -94,16 +94,18 @@
         .alert-success { @apply bg-green-400 }
         .alert-warning { @apply bg-amber-400 }
         .alert-danger { @apply bg-amber-500 }
-    </style>
+        </style>
 </head>
 <body class="{% block class %}{% endblock %}" hx-headers='{"x-csrftoken": "{{ csrf_token }}"}'>
-	
+    
     {% include 'includes/messages.html' %}
 
-    {% include 'includes/header.html' %}
+    {% load header %}
+    {% header_view request %}
 
     {% block layout %}
     {% endblock %}
+    {% block javascript %}{% endblock %}
 
 </body>
 </html>
