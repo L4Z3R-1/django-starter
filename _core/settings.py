@@ -208,7 +208,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media' 
 MULTITENANT_RELATIVE_MEDIA_ROOT = 'tenants/%s/'
 
-STORAGE = {
+STORAGES = {
     'default': {
         'BACKEND': 'a_home.storage.CustomSchemaStorage',
     },
