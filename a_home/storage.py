@@ -2,7 +2,7 @@ from django.core.files.storage import FileSystemStorage
 from django.db import connection
 from django_tenants.files.storage import TenantFileSystemStorage
 from django.conf import settings
-from storages.backends.s3 import S3Storage
+# from storages.backends.s3 import S3Storage
 
 class CustomSchemaStorage:
     def _get_storage_backend(self):
@@ -14,9 +14,11 @@ class CustomSchemaStorage:
                 return TenantFileSystemStorage()
         else:
             if schema_name == 'public':
-                return S3Storage() 
+                # return S3Storage()
+                return FileSystemStorage() 
             else:
-                return S3TenantStorage(schema_name)
+                # return S3TenantStorage(schema_name)
+                return TenantFileSystemStorage()
 
     def save(self, name, content, max_length=None):
         storage_backend = self._get_storage_backend()
