@@ -17,3 +17,6 @@ def create_item(request):
         return HttpResponse(f'<li class="text-8xl font-thin">{item.name}</li>')
     else:
         return redirect('home')
+    
+def health(request):
+    return HttpResponse("Django is running")
